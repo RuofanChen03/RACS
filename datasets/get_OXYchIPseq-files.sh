@@ -9,7 +9,14 @@
 
 # if it is not part of your PATH, you can use this to add the location
 # where "SRA toolkit" is installed so it can be used to download the NCBI data
-PATH=$PATH:/scratch1/mponce/RESEARCH/Tetrahymena_Ryerson/TOOLS/NCBI_SRA_toolkit/sratoolkit.2.9.6-1-ubuntu64/bin
+# E.g.
+# PATH=$PATH:/scratch1/mponce/RESEARCH/Tetrahymena_Ryerson/TOOLS/NCBI_SRA_toolkit/sratoolkit.2.9.6-1-ubuntu64/bin
+# --OR--
+# in Niagara/SciNet load the SRA-TOOLKIT module from CCEnv
+module load CCEnv
+module load StdEnv/2023 gcc/12.3
+module load sra-toolkit/3.0.9
+
 
 #######################################################
 # check that the script is not being sourced!!!
