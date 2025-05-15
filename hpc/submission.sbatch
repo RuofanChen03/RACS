@@ -2,7 +2,7 @@
 ##SBATCH -p debug
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=40
-#SBATCH -t 6:00:00
+#SBATCH -t 3:00:00
 #SBATCH -J RACS_expr1_orig_sbatch
 #SBATCH --mail-user=ruoghan.chen@mail.utoronto.ca
 #SBATCH --mail-type=ALL
