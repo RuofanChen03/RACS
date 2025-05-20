@@ -2,7 +2,10 @@
 # for SciNet/Niagara system  -- using CCEnv and SAMTOOLS and BWA + required supporting packages nixpkgs and intel compiler
 # November 2018
 
-module load CCEnv
-module load nixpkgs/16.09  intel/2018.3 samtools/1.9 bwa/0.7.17
+# module load CCEnv
+# module load nixpkgs/16.09  intel/2018.3 samtools/1.9 bwa/0.7.17
+# module list
 
+# For running the IGR sections
+module load samtools/1.9 intel/2019u4 r/3.6.1
 module list

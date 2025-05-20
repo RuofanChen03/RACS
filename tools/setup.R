@@ -90,6 +90,15 @@ checkVersion <- function(pckges) {
 ##############################################################################################
 
 
+# Set a local directory for package installation
+user_lib <- Sys.getenv("R_LIBS_USER")
+print(user_lib)
+if (!dir.exists(user_lib)) dir.create(user_lib, recursive = TRUE)
+.libPaths(user_lib)
+
+install.packages("data.table", repos = "https://cloud.r-project.org")
+
+
 
 # check and install required packages
 NeededPackages(pckges)
