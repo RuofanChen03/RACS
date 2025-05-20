@@ -6,7 +6,28 @@
 
 # define dependencies, ie. needed to be installed for the code to run
 # first packages that can be installaed from CRAN using install.packages()
-pckges <- c("xlsx","plotly")
+
+
+if (interactive()) {
+	# interactive mode
+	# check that variable "pckges" is defined
+	pckgesVar <- "pckges" %in% ls()
+	if (!pckgesVar) {
+		message("You need to define 'pckges' to install!")
+		message('E.g. pckges <- "plotly"')
+		stop("")
+	}
+} else {
+	# default value for packages when running in batch mode
+	pckges <- c("xlsx","plotly")
+
+	# allow to define packages to check via CLA
+	CLAs <- commandArgs(trailing=TRUE)
+	if (length(CLAs) > 0) {
+		pckges <- c(CLAs)
+	}
+}
+
 
 ##############################################################################################
 # functions for checking whether dependencies are installed and install all needed packages
@@ -18,11 +39,12 @@ NeededPackages <- function(pckges, otherPckgs="", def.mirror='https://cloud.r-pr
 	Rverm <- as.numeric(R.Version()['minor'])
 
         availablePckges <- .packages(all.available = TRUE)
+	#print(availablePckges)
 
 	# deal with packages from CRAN
         needTOinstall <- !(pckges %in% availablePckges)
 	if (sum(needTOinstall) != 0) {
-	    cat("Requested packages:")
+	    cat("Requested packages from CRAN:")
 	    print(pckges)
 	    cat("installing...", pckges[needTOinstall], '\n')
 	    for (pck in pckges[needTOinstall]) {
@@ -32,10 +54,10 @@ NeededPackages <- function(pckges, otherPckgs="", def.mirror='https://cloud.r-pr
 
 	# deal with packages from BioConductor
         needTOinstall <- !(otherPckgs %in% availablePckges)
-	if (sum(needTOinstall) != 0 ) {
+	if ((otherPckgs!="") && (sum(needTOinstall) != 0) ) {
 	    cat("Requested packages:")
 	    print(otherPckgs)
-	    cat("installing...", otherPckgs[needTOinstall], '\n')
+	    cat("installing from BioConductor...", otherPckgs[needTOinstall], '\n')
             for (pck in otherPckgs[needTOinstall]) {
 		print(RverM); print(Rverm)
 		if ((RverM >= 3 ) && (Rverm > 5)) {
