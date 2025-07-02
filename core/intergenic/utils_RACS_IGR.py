@@ -28,6 +28,9 @@ def reshape_table(origDATA):
     tmpTable['scfSTRG'] = scfSTRG
     sortedTABLE = tmpTable.sort_values(by='scfSTRG').drop(columns=['scfSTRG']).reset_index(drop=True)
 
+    # Print the shape of the table
+    print(f"DEBUG:: Reshaped table shape: {sortedTABLE.shape[0]} rows, {sortedTABLE.shape[1]} columns")
+
     return sortedTABLE
 
 def dump_data(scaffold, region1, region2, flag):

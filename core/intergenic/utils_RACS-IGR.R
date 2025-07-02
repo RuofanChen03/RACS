@@ -30,6 +30,9 @@ sortedTABLE <- tmpTable[as.numeric(names(sort(scfSTRG))),]
 # II) alternatively one could use an auxiliary library "stringr"
 # eg. str_sort(tmpTable$lscaffold, numeric = TRUE)
 
+# print the shape of the table
+cat("DEBUG:: Reshaped table with",dim(sortedTABLE)[1],"rows and",dim(sortedTABLE)[2],"columns",'\n')
+
 return(sortedTABLE)
 }
 #######################################################################
