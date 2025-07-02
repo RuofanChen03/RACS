@@ -88,10 +88,13 @@ def parse_args(default_ref_file="DATA/T_thermophila_June2014.sorted.gff3", defau
     return input_file, ref_file, out_file
 
 def read_data(filename):
-    input_data = pd.read_csv(filename, header=0, sep='')  # assuming comma delimiter like default R `read.csv`
-    input_data.rename(columns={input_data.columns[0]: "geneSCFFLD"}, inplace=True)
+    # Read CSV with header and default separator (any whitespace)
+    inputDATA = pd.read_csv(filename, sep=r'\s+', engine='python')
 
-    return input_data
+    # Rename columns
+    inputDATA.columns.values[0] = "geneSCFFLD"
+
+    return inputDATA
 
 def read_ref_table(ref_file, kwrd='contig'):
     ref_table_orig = pd.read_csv(ref_file, header=None, sep='\t')
