@@ -78,6 +78,14 @@ refTable <- readRefTable(files2process[2])
 
 sortedDATA <- reshapeTable(inputDATA)
 
+# Print the sorted data for debugging purposes
+for (i in c(1:nbrEntries)) {
+    cat(i, sortedDATA[i,]$lscaffold, sortedDATA[i,]$lbregion, sortedDATA[i,]$leregion, '\n')
+}
+
+# exit the script now
+stop("Exiting the script after reading and sorting the data...")
+
 nbrEntries <- length(sortedDATA$lscaffold)
 
 
