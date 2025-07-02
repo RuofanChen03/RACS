@@ -30,7 +30,7 @@ def main():
         print(i + 1, scaffold, begReg, endReg)
 
         if SCFLD == scaffold:
-            if begReg > sorted_data.loc[i, 'leregion']:
+            if i > 0 and begReg > sorted_data.loc[i - 1, 'leregion']:
                 beginRegion = begReg
                 myScfld = dump_data(SCFLD, endRegion, beginRegion, 1)
                 lstscfld.append(myScfld[0])
@@ -40,6 +40,7 @@ def main():
                 endRegion = endReg
             else:
                 warning_scfld(scaffold, begReg, endReg, lstscfld, lstregion1, lstregion2)
+                endRegion = endReg  # Still update endRegion
         else:
             if SCFLD != "":
                 beginRegion = begReg
