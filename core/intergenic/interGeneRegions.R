@@ -80,14 +80,6 @@ sortedDATA <- reshapeTable(inputDATA)
 
 nbrEntries <- length(sortedDATA$lscaffold)
 
-# Print the sorted data for debugging purposes
-for (i in c(1:nbrEntries)) {
-    cat(i, sortedDATA[i,]$lscaffold, sortedDATA[i,]$lbregion, sortedDATA[i,]$leregion, '\n')
-}
-
-# exit the script now
-stop("Exiting the script after reading and sorting the data...")
-
 
 
 #for (i in c(1:nbrEntries)) {

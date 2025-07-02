@@ -17,13 +17,6 @@ def main():
     input_data = read_data(input_file)
     ref_table = read_ref_table(ref_file)
     sorted_data = reshape_table(input_data)
-    
-    # Print sorted data for debugging
-    print("Sorted data:")
-    print(sorted_data)
-    
-    # Exit early for debugging purposes
-    exit(0)
 
     nbr_entries = len(sorted_data)
     lstscfld, lstregion1, lstregion2, lstSize = [], [], [], []
@@ -37,7 +30,7 @@ def main():
         print(i + 1, scaffold, begReg, endReg)
 
         if SCFLD == scaffold:
-            if begReg > sorted_data.loc[i - 1, 'leregion']:
+            if begReg > sorted_data.loc[i, 'leregion']:
                 beginRegion = begReg
                 myScfld = dump_data(SCFLD, endRegion, beginRegion, 1)
                 lstscfld.append(myScfld[0])
